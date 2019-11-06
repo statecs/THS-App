@@ -69,9 +69,8 @@ doWeHaveNet() async {
 
 Future<List<Post>> getPosts() async {
   posts = await client.listPosts(perPage: perPageInt, injectObjects: true);
-  return posts ;
+  return posts;
 }
-
 
 Future<List<Post>> isExitst() async {
   doWeHaveNet();
@@ -96,8 +95,7 @@ Future<List<Post>> isExitst() async {
     debugPrint('No Cached Posts Has Been FOUND');
     posts = await client.listPosts(perPage: perPageInt, injectObjects: true);
     fillDB();
-    return posts ;
-
+    return posts;
   } else {
     for (int i = 0; i < cachedPostsIDs.length; i++) {
       for (int j = 0; j < postsIDs.length; j++) {

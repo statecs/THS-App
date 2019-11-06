@@ -58,7 +58,7 @@ class HawalnirHomeState extends State<HawalnirHome>
                     children: [
                       Container(
                         child: FutureBuilder<List<Post>>(
-                          future: client.listPosts(),
+                          future: client.listCards(),
                           builder: (context, snapshot) {
                             if (snapshot.hasError) print(snapshot.error);
 

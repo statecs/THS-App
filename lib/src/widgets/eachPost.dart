@@ -10,15 +10,12 @@ class HawalnirPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(post.id.toString());
+    //debugPrint(post.id.toString());
 
     return new Scaffold(
       appBar: new AppBar(
         elevation: 0,
-        title:
-            FittedBox( child: hawalTitle(post)
-),
-          
+        title: FittedBox(child: hawalTitle(post)),
         backgroundColor: Colors.transparent,
       ),
       body: new Padding(

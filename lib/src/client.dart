@@ -52,6 +52,59 @@ class WordpressClient {
     return categories;
   }
 
+  /// Get all available cards.
+  ///
+  /// If [categoryIDs] list is provided then only posts within those categories
+  /// will be returned. Use [injectObjects] to have full objects injected
+  /// rather than just the object ID (i.e. a posts's featured media). The [page]
+  /// and [perPage] parameters allow for pagination.
+  Future<List<Post>> listCards(
+      {List<int> categoryIDs,
+      bool injectObjects: false,
+      List<int> excludeIDs,
+      int page: 1,
+      int perPage: 100}) async {
+    String _endpoint = '/wp/v2/cards?_embed';
+    print(_endpoint);
+
+    // Build query string starting with pagination
+    String queryString = '&per_page=$perPage';
+    //queryString = _addParamToQueryString(queryString, 'page', page.toString());
+
+    // If category IDs were sent, limit to those
+    if (categoryIDs != null && categoryIDs.length > 0) {
+      queryString = _addParamToQueryString(
+          queryString, 'categories', categoryIDs.join(','));
+    }
+
+    // Exclude posts?
+    if (excludeIDs != null && excludeIDs.length > 0) {
+      queryString =
+          _addParamToQueryString(queryString, 'exclude', excludeIDs.join(','));
+    }
+
+    // Append the query string
+    _endpoint += queryString;
+    //_endpoint =
+    // Retrieve the data
+    List<Map> postMaps = await _get(_endpoint);
+    print(_endpoint);
+
+    List<Post> posts = new List();
+    posts = postMaps.map((postMap) => new Post.fromMap(postMap)).toList();
+    //print(posts.toString()) ;
+    // Inject objects if requested
+//    if (injectObjects) {
+//      for (Post p in posts) {
+//        if (p.featuredMediaID != null && p.featuredMediaID > 0) {
+//          p.featuredMedia = await getMedia(p.featuredMediaID);
+//        }
+//      }
+//    }
+
+    return posts;
+  }
+
   /// Get all available posts.
   ///
   /// If [categoryIDs] list is provided then only posts within those categories
@@ -174,8 +227,8 @@ class WordpressClient {
 
     // Retrieve the data
     List<Map> userMaps = await _get(_endpoint).then((onValue) {
-      debugPrint('the userMpas'+ onValue.toString()); 
-    }).catchError((e)=> debugPrint(e));
+      debugPrint('the userMpas' + onValue.toString());
+    }).catchError((e) => debugPrint(e));
 
     var users = new List();
 
@@ -184,6 +237,32 @@ class WordpressClient {
     }
 
     return users;
+  }
+
+  /// Get page
+  Future<Post> getPage(String postSlug, {bool injectObjects: true}) async {
+    if (postSlug == null) {
+      return null;
+    }
+
+    String _endpoint = '/wp/v2/pages?slug=$postSlug?_embed';
+
+    // Retrieve the data
+    Map postMap = await _get(_endpoint);
+    if (postMap == null) {
+      return null;
+    }
+
+    Post p = new Post.fromMap(postMap);
+
+    // Inject objects if requested
+//    if (injectObjects) {
+//      if (p.featuredMediaID != null && p.featuredMediaID > 0) {
+//        p.featuredMedia = await getMedia(p.featuredMediaID);
+//      }
+//    }
+
+    return p;
   }
 
   /// Get post
