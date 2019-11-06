@@ -58,13 +58,13 @@ class HawalnirHomeState extends State<HawalnirHome>
                     fit: StackFit.expand,
                     children: [
                       Container(
-                        child: FutureBuilder<List<Post>>(
+                        child: FutureBuilder<List>(
                           future: client.listCards(),
                           builder: (context, snapshot) {
                             if (snapshot.hasError) print(snapshot.error);
 
                             return snapshot.hasData
-                                ? ListViewPages(posts: snapshot.data)
+                                ? ListViewPages(card: snapshot.data)
                                 : Center(child: CircularProgressIndicator());
                           },
                         ),

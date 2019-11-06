@@ -20,15 +20,6 @@ Widget drawerMain(context) {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.center,
-                            color: Colors.black45,
-                            child: Text('Menu '),
-                          ),
-                        ),
-                      ],
                     ),
                     Expanded(
                       child: FutureBuilder<List<Category>>(
@@ -42,11 +33,12 @@ Widget drawerMain(context) {
                               itemBuilder: (context, index) {
                                 List _categories = snapshot.data;
                                 return Container(
-                                  margin: EdgeInsets.only(top: 4),
+                                  margin: EdgeInsets.only(top: 2),
                                   color: Colors.white12,
                                   height: 60,
                                   child: ListTile(
                                     title: Text(_categories[index].title),
+                                    trailing: Icon(Icons.keyboard_arrow_right),
                                   ),
                                   /*child: ListTile(
                                     title: Text(_categories[index].name),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hawalnir1/src/models/post.dart';
+import 'package:hawalnir1/src/models/cards.dart';
 
 import '../pages/listView.dart';
 import 'catWidgets.dart';
-import 'eachPost.dart';
+import 'eachCard.dart';
 
 class PageCard extends StatefulWidget {
-  PageCard({Key key, this.post}) : super(key: key);
-  final Post post;
+  PageCard({Key key, this.card}) : super(key: key);
+  final Cards card;
 
   _PageCardState createState() => _PageCardState();
 }
@@ -41,15 +41,17 @@ class _PageCardState extends State<PageCard> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HawalnirPost(post: widget.post),
+                    builder: (context) => EachCard(card: widget.card),
                   ),
                 );
               },
-              title: hawalTitle(widget.post),
+              title: cardTitle(widget.card),
               subtitle: Row(
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[],
+                children: <Widget>[
+                  userInterest(widget.card),
+                ],
               ),
             ),
           ),

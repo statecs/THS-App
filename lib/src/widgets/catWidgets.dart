@@ -134,6 +134,96 @@ Widget connectionErrorBar() {
   );
 }
 
+//Cards
+
+Widget cardImage(Cards cards) {
+  return Stack(
+    children: <Widget>[
+      Positioned(
+        bottom: 5.0,
+        right: 0,
+        left: 0,
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                spreadRadius: 10,
+                blurRadius: 20,
+                color: Colors.black,
+                offset: new Offset(1.0, 1.0),
+              ),
+            ],
+          ),
+        ),
+      ),
+      Container(
+        foregroundDecoration: BoxDecoration(
+            backgroundBlendMode: BlendMode.overlay,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.1, 0.5, 0.7, 0.9],
+              colors: [
+                // Colors are easy thanks to Flutter's Colors class.
+
+                Colors.transparent,
+                Colors.transparent,
+                Colors.black45,
+                Colors.black87,
+              ],
+            )),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          child: CachedNetworkImage(
+//          width: 200.0,
+            fadeInCurve: Curves.decelerate,
+            repeat: ImageRepeat.noRepeat,
+            fadeInDuration: Duration(milliseconds: 500),
+            imageUrl: cards.featuredMediaUrl == null
+                ? 'assets/images/placeholder.png'
+                : cards.featuredMediaUrl,
+            placeholder: (context, url) =>
+                Image.asset('assets/images/placeholder.png'),
+            // placeholder: Image.asset('assets/images/placeholder.png'),
+            errorWidget: (context, url, error) => Container(
+              child: Icon(Icons.error),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget cardDate(Cards cards) {
+  return Text(
+    dateConvertor(cards.date.toString()),
+    textAlign: TextAlign.left,
+  );
+}
+
+Widget cardTitle(Cards cards) {
+  return Html(
+      data: cards.title,
+      defaultTextStyle: TextStyle(
+        fontSize: 20.0,
+      ));
+}
+
+Widget cardAuthor(Cards cards) {
+  return Text(
+    "author: " + cards.author,
+    textAlign: TextAlign.right,
+  );
+}
+
+Widget userInterest(Cards cards) {
+  return Text(
+    cards.userInterest,
+    textAlign: TextAlign.left,
+  );
+}
+
 // This is the type used by the popup menu below.
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
 
@@ -153,17 +243,17 @@ sliverListGlobal(List<Post> posts) {
   );
 }
 
-sliverListPagesGlobal(List<Post> posts) {
+sliverListPagesGlobal(List<Cards> cards) {
   //debugPrint('SliverListGlobal recived ' + posts.length.toString());
   return SliverList(
 //                itemExtent: 600.0,
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, index) {
         return PageCard(
-          post: posts[index],
+          card: cards[index],
         );
       },
-      childCount: posts.length,
+      childCount: cards.length,
       addAutomaticKeepAlives: true,
     ),
   );

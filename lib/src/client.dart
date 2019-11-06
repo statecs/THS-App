@@ -8,6 +8,7 @@ import 'package:logging/logging.dart';
 import 'models/category.dart';
 import 'models/media.dart';
 import 'models/post.dart';
+import 'models/cards.dart';
 import 'models/users.dart';
 
 typedef void APIErrorHandler(String endpoint, int statusCode, String response);
@@ -59,7 +60,7 @@ class WordpressClient {
   /// will be returned. Use [injectObjects] to have full objects injected
   /// rather than just the object ID (i.e. a posts's featured media). The [page]
   /// and [perPage] parameters allow for pagination.
-  Future<List<Post>> listCards(
+  Future<List<Cards>> listCards(
       {List<int> categoryIDs,
       bool injectObjects: false,
       List<int> excludeIDs,
@@ -89,8 +90,8 @@ class WordpressClient {
     // Retrieve the data
     List<Map> postMaps = await _get(_endpoint);
 
-    List<Post> posts = new List();
-    posts = postMaps.map((postMap) => new Post.fromMap(postMap)).toList();
+    List<Cards> cards = new List();
+    cards = postMaps.map((postMap) => new Cards.fromMap(postMap)).toList();
     //print(posts.toString()) ;
     // Inject objects if requested
 //    if (injectObjects) {
@@ -101,7 +102,7 @@ class WordpressClient {
 //      }
 //    }
 
-    return posts;
+    return cards;
   }
 
   /// Get all available posts.
