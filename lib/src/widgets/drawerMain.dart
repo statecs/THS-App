@@ -25,7 +25,7 @@ Widget drawerMain(context) {
                           child: Container(
                             alignment: Alignment.center,
                             color: Colors.black45,
-                            child: Text('Categories '),
+                            child: Text('Menu '),
                           ),
                         ),
                       ],
@@ -40,12 +40,15 @@ Widget drawerMain(context) {
                             return ListView.builder(
                               itemCount: snapshot.data.length,
                               itemBuilder: (context, index) {
-                                List<Category> _categories = snapshot.data;
+                                List _categories = snapshot.data;
                                 return Container(
                                   margin: EdgeInsets.only(top: 4),
                                   color: Colors.white12,
                                   height: 60,
                                   child: ListTile(
+                                    title: Text("Title"),
+                                  ),
+                                  /*child: ListTile(
                                     title: Text(_categories[index].name),
                                     subtitle: Wrap(children: [
                                       Text(
@@ -60,7 +63,7 @@ Widget drawerMain(context) {
                                     trailing: Container(
                                         width: 80,
                                         child: Text(_categories[index].slug)),
-                                  ),
+                                  ),*/
                                 );
                               },
                             );

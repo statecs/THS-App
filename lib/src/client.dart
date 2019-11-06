@@ -25,8 +25,8 @@ class WordpressClient {
   /// If [hideEmpty] is false then ALL categories will be returned, and
   /// [excludeIDs] can be used to ignore specific category IDs
   Future<List<Category>> listCategories(
-      {bool hideEmpty: true, List<int> excludeIDs}) async {
-    String _endpoint = '/wp/v2/categories';
+      {bool hideEmpty: true, List<dynamic> excludeIDs}) async {
+    String _endpoint = '/wp-api-menus/v2/menus/332';
 
     // Build query string
     String queryString = '';
@@ -42,12 +42,13 @@ class WordpressClient {
     _endpoint += queryString;
 
     // Retrieve the data
-    List<Map> categoryMaps = await _get(_endpoint);
+    var categoryMaps = await _get(_endpoint);
 
-    List<Category> categories = new List();
-    categories = categoryMaps
-        .map((categoryMap) => new Category.fromMap(categoryMap))
+    List categories = new List();
+    categories = (categoryMaps['items'] as List)
+        .map((i) => Category.fromJson(i))
         .toList();
+    print(categories);
 
     return categories;
   }
