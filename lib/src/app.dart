@@ -167,7 +167,7 @@ class HawalnirHomeState extends State<HawalnirHome>
                     BottomNavigationBarItem(
                         title: Text('Favorites'), icon: Icon(Icons.favorite)),
                     BottomNavigationBarItem(
-                        title: Text('gallery'), icon: Icon(Icons.image)),
+                        title: Text('Cards'), icon: Icon(Icons.pages)),
                   ]),
             ),
           ],

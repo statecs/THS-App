@@ -66,7 +66,6 @@ class WordpressClient {
       int page: 1,
       int perPage: 100}) async {
     String _endpoint = '/wp/v2/cards?_embed';
-    print(_endpoint);
 
     // Build query string starting with pagination
     String queryString = '&per_page=$perPage';
@@ -89,7 +88,6 @@ class WordpressClient {
     //_endpoint =
     // Retrieve the data
     List<Map> postMaps = await _get(_endpoint);
-    print(_endpoint);
 
     List<Post> posts = new List();
     posts = postMaps.map((postMap) => new Post.fromMap(postMap)).toList();

@@ -46,7 +46,7 @@ Widget drawerMain(context) {
                                   color: Colors.white12,
                                   height: 60,
                                   child: ListTile(
-                                    title: Text("Title"),
+                                    title: Text(_categories[index].title),
                                   ),
                                   /*child: ListTile(
                                     title: Text(_categories[index].name),
