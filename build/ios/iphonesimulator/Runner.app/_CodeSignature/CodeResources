@@ -82,7 +82,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		+yUbayOAzTDI3YlA8xxhngSD8mM=
+		6Ff8CQLYFQVHXygk9RQWCclnNTo=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/objects-13.0+.nib</key>
 		<data>
@@ -126,7 +126,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		xoQxIjREM67ikhqmax0ZjGOtDh4=
+		+psw6As9YSFlJF6s4+4synvxpxI=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -134,7 +134,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		xDRjCgajmqKIG1bQR3+1f2H2BZk=
+		rR1d+vKO24KTyyzFFIZ5LHyxQhA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
@@ -162,7 +162,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		sevCd7A1T8GlWE5eAnHGZ4+T+NM=
+		B52DyNxnn7V2HMeH6YKZfSndqt4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/lib/src/fonts/NotoKufiArabic-Regular.ttf</key>
 		<data>
@@ -198,7 +198,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5LrfonNokP5YRxGUL/P+HPTbsJE=
+		JgpPIJ2Jsvl7dDgp+RskOP4gjdg=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -420,11 +420,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+yUbayOAzTDI3YlA8xxhngSD8mM=
+			6Ff8CQLYFQVHXygk9RQWCclnNTo=
 			</data>
 			<key>hash2</key>
 			<data>
-			b4jUFTHad4B2k8UthBFlA8tnjXuu3qJv+Vd/GUwgxNI=
+			+MFB0LhtuuAKBMGaC1/FEYZKHQ0z1wZ4kgHbZ6VQjSQ=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/objects-13.0+.nib</key>
@@ -541,11 +541,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xoQxIjREM67ikhqmax0ZjGOtDh4=
+			+psw6As9YSFlJF6s4+4synvxpxI=
 			</data>
 			<key>hash2</key>
 			<data>
-			p8rrOTI4Pb0V7hwG3rb3IeGPsanymHBlLXribpdjwps=
+			+Y7tXdQTNa3xAi1l8J5UvA13ZqVx3ipaoTtNb4uObPo=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -563,11 +563,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xDRjCgajmqKIG1bQR3+1f2H2BZk=
+			rR1d+vKO24KTyyzFFIZ5LHyxQhA=
 			</data>
 			<key>hash2</key>
 			<data>
-			UyD19CwCbUPpK1OjWQ65MyXIwlSS+PYXR0iV56VZeeY=
+			37RGwRxay8zhNdM6+IfUb1f9fE3P0F5MJe3q77cC4W4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
@@ -640,11 +640,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sevCd7A1T8GlWE5eAnHGZ4+T+NM=
+			B52DyNxnn7V2HMeH6YKZfSndqt4=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZRFT4D7muuK7yrU0vhfz9ukKmXCuRTx0SHjWlK7ZhEo=
+			7EWuLP/VcLlisTTYqAWP2e9e1jMafuwrEImAA9fuuaU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/lib/src/fonts/NotoKufiArabic-Regular.ttf</key>
