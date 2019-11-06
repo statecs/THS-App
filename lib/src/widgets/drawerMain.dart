@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hawalnir1/src/app.dart';
 import 'package:hawalnir1/src/models/category.dart';
 
-
 import '../../wordpress_client.dart';
 
 Widget drawerMain(context) {

@@ -24,6 +24,7 @@ class HawalnirHome extends StatefulWidget {
 
 class HawalnirHomeState extends State<HawalnirHome>
     with TickerProviderStateMixin {
+  int _index = 0;
   var scrollCont =
       ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
 
@@ -42,6 +43,57 @@ class HawalnirHomeState extends State<HawalnirHome>
               Widget child,
             ) {
               final bool connected = connectivity != ConnectivityResult.none;
+              switch (_index) {
+                case 0:
+                  debugPrint('page 0');
+                  child = Text("Go to another page");
+                  break;
+                case 1:
+                  debugPrint('page 1');
+                  break;
+                case 2:
+                  debugPrint('page 2');
+                  return new Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Container(
+                        child: FutureBuilder<List<Post>>(
+                          future: client.listPosts(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) print(snapshot.error);
+
+                            return snapshot.hasData
+                                ? ListViewPosts(posts: snapshot.data)
+                                : Center(child: CircularProgressIndicator());
+                          },
+                        ),
+                      ),
+                      Positioned(
+                        height: 24.0,
+                        left: 0.0,
+                        right: 0.0,
+                        bottom: 0.0,
+                        child: Container(
+                          color: connected ? null : Color(0xFFEE4400),
+                          child: Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text("${connected ? '' : 'OFFLINE'}",
+                                  textDirection: TextDirection.rtl)),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          color: Colors.black,
+                          child: bottomNavAppBar(),
+                        ),
+                      ),
+                    ],
+                  );
+                  break;
+              }
               return new Stack(
                 fit: StackFit.expand,
                 children: [
@@ -104,6 +156,8 @@ class HawalnirHomeState extends State<HawalnirHome>
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
               child: BottomNavigationBar(
+                  currentIndex: _index,
+                  onTap: (int index) => setState(() => _index = index),
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   items: [
