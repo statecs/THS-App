@@ -47,13 +47,9 @@ class HawalnirHomeState extends State<HawalnirHome>
               switch (_index) {
                 case 0:
                   debugPrint('page 0');
-                  child = Text("Go to another page");
                   break;
                 case 1:
                   debugPrint('page 1');
-                  break;
-                case 2:
-                  debugPrint('page 2');
                   return new Stack(
                     fit: StackFit.expand,
                     children: [
@@ -69,6 +65,37 @@ class HawalnirHomeState extends State<HawalnirHome>
                           },
                         ),
                       ),
+                      Positioned(
+                        height: 24.0,
+                        left: 0.0,
+                        right: 0.0,
+                        bottom: 0.0,
+                        child: Container(
+                          color: connected ? null : Color(0xFFEE4400),
+                          child: Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: Text("${connected ? '' : 'OFFLINE'}",
+                                  textDirection: TextDirection.rtl)),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          color: Colors.black,
+                          child: bottomNavAppBar(),
+                        ),
+                      ),
+                    ],
+                  );
+                  break;
+                case 2:
+                  debugPrint('page 2');
+                  return new Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Container(),
                       Positioned(
                         height: 24.0,
                         left: 0.0,
@@ -165,9 +192,9 @@ class HawalnirHomeState extends State<HawalnirHome>
                     BottomNavigationBarItem(
                         title: Text('Home'), icon: Icon(Icons.home)),
                     BottomNavigationBarItem(
-                        title: Text('Favorites'), icon: Icon(Icons.favorite)),
-                    BottomNavigationBarItem(
                         title: Text('News'), icon: Icon(Icons.archive)),
+                    BottomNavigationBarItem(
+                        title: Text('Profile'), icon: Icon(Icons.favorite)),
                   ]),
             ),
           ],
