@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:hawalnir1/src/pages/listView.dart';
+import 'package:hawalnir1/src/pages/listPages.dart';
 import 'package:hawalnir1/src/view_models/app_key.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -63,7 +64,7 @@ class HawalnirHomeState extends State<HawalnirHome>
                             if (snapshot.hasError) print(snapshot.error);
 
                             return snapshot.hasData
-                                ? ListViewPosts(posts: snapshot.data)
+                                ? ListViewPages(posts: snapshot.data)
                                 : Center(child: CircularProgressIndicator());
                           },
                         ),

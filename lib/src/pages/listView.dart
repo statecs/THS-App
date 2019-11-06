@@ -21,24 +21,23 @@ var scrollCont =
 
 class ListViewPostsState extends State<ListViewPosts> {
   var dbHelper = DatabaseHelper();
- 
+
   int count = 0;
 
   @override
   Widget build(BuildContext context) {
-      debugPrint('posts count' + widget.posts.length.toString());
+    debugPrint('posts count' + widget.posts.length.toString());
     return Scaffold(
       body: Stack(
         children: <Widget>[
           RefreshIndicator(
             displacement: 150.0,
-            onRefresh:()=> client.listPosts(),
+            onRefresh: () => client.listPosts(),
             child: CustomScrollView(
               controller: scrollCont,
               slivers: <Widget>[
                 SliverAppBarCustomized(),
-                sliverListGlobal(widget.posts),      
-                  
+                sliverListGlobal(widget.posts),
               ],
             ),
           ),

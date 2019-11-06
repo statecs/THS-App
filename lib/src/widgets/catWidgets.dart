@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:hawalnir1/src/widgets/posts_card.dart';
+import 'package:hawalnir1/src/widgets/page_card.dart';
 import 'hawalnir-date-convertor.dart';
 import '../config.dart';
 import '../../wordpress_client.dart';
@@ -143,6 +144,22 @@ sliverListGlobal(List<Post> posts) {
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, index) {
         return PostsCard(
+          post: posts[index],
+        );
+      },
+      childCount: posts.length,
+      addAutomaticKeepAlives: true,
+    ),
+  );
+}
+
+sliverListPagesGlobal(List<Post> posts) {
+  //debugPrint('SliverListGlobal recived ' + posts.length.toString());
+  return SliverList(
+//                itemExtent: 600.0,
+    delegate: SliverChildBuilderDelegate(
+      (BuildContext context, index) {
+        return PageCard(
           post: posts[index],
         );
       },
