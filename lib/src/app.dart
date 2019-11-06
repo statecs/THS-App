@@ -58,13 +58,13 @@ class HawalnirHomeState extends State<HawalnirHome>
                     fit: StackFit.expand,
                     children: [
                       Container(
-                        child: FutureBuilder<List>(
-                          future: client.listCards(),
+                        child: FutureBuilder<List<Post>>(
+                          future: client.listPosts(),
                           builder: (context, snapshot) {
                             if (snapshot.hasError) print(snapshot.error);
 
                             return snapshot.hasData
-                                ? ListViewPages(card: snapshot.data)
+                                ? ListViewPosts(posts: snapshot.data)
                                 : Center(child: CircularProgressIndicator());
                           },
                         ),
@@ -99,13 +99,13 @@ class HawalnirHomeState extends State<HawalnirHome>
                 fit: StackFit.expand,
                 children: [
                   Container(
-                    child: FutureBuilder<List<Post>>(
-                      future: client.listPosts(),
+                    child: FutureBuilder<List>(
+                      future: client.listCards(),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) print(snapshot.error);
 
                         return snapshot.hasData
-                            ? ListViewPosts(posts: snapshot.data)
+                            ? ListViewPages(card: snapshot.data)
                             : Center(child: CircularProgressIndicator());
                       },
                     ),
@@ -167,7 +167,7 @@ class HawalnirHomeState extends State<HawalnirHome>
                     BottomNavigationBarItem(
                         title: Text('Favorites'), icon: Icon(Icons.favorite)),
                     BottomNavigationBarItem(
-                        title: Text('Cards'), icon: Icon(Icons.pages)),
+                        title: Text('News'), icon: Icon(Icons.archive)),
                   ]),
             ),
           ],
