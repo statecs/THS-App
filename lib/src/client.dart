@@ -21,7 +21,7 @@ class WordpressClient {
 
   WordpressClient(this._baseURL, this._client, [this._errorHandler]);
 
-  /// Get all available categories.
+  /// Get all available menu items.
   ///
   /// If [hideEmpty] is false then ALL categories will be returned, and
   /// [excludeIDs] can be used to ignore specific category IDs
@@ -118,6 +118,59 @@ class WordpressClient {
       int page: 1,
       int perPage: 10}) async {
     String _endpoint = '/wp/v2/posts?_embed';
+    print(_endpoint);
+
+    // Build query string starting with pagination
+    String queryString = '&per_page=$perPage';
+    //queryString = _addParamToQueryString(queryString, 'page', page.toString());
+
+    // If category IDs were sent, limit to those
+    if (categoryIDs != null && categoryIDs.length > 0) {
+      queryString = _addParamToQueryString(
+          queryString, 'categories', categoryIDs.join(','));
+    }
+
+    // Exclude posts?
+    if (excludeIDs != null && excludeIDs.length > 0) {
+      queryString =
+          _addParamToQueryString(queryString, 'exclude', excludeIDs.join(','));
+    }
+
+    // Append the query string
+    _endpoint += queryString;
+    //_endpoint =
+    // Retrieve the data
+    List<Map> postMaps = await _get(_endpoint);
+    print(_endpoint);
+
+    List<Post> posts = new List();
+    posts = postMaps.map((postMap) => new Post.fromMap(postMap)).toList();
+    //print(posts.toString()) ;
+    // Inject objects if requested
+//    if (injectObjects) {
+//      for (Post p in posts) {
+//        if (p.featuredMediaID != null && p.featuredMediaID > 0) {
+//          p.featuredMedia = await getMedia(p.featuredMediaID);
+//        }
+//      }
+//    }
+
+    return posts;
+  }
+
+  /// Get restaurant.
+  ///
+  /// If [categoryIDs] list is provided then only posts within those categories
+  /// will be returned. Use [injectObjects] to have full objects injected
+  /// rather than just the object ID (i.e. a posts's featured media). The [page]
+  /// and [perPage] parameters allow for pagination.
+  Future<List<Post>> listRestaurant(
+      {List<int> categoryIDs,
+      bool injectObjects: false,
+      List<int> excludeIDs,
+      int page: 1,
+      int perPage: 10}) async {
+    String _endpoint = '/wp/v2/restaurant?_embed&slug=nymble-restaurant';
     print(_endpoint);
 
     // Build query string starting with pagination

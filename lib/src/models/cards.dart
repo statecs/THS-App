@@ -57,6 +57,7 @@ class Cards {
   bool featuredMediaThumb;
 
   String userInterest;
+  String cardType;
 
   //String commentStatus;
 
@@ -136,6 +137,7 @@ class Cards {
     // print(featuredMediaUrl);
 
     userInterest = map["pure_taxonomies"]["user_interest"][0]["name"];
+    cardType = map["acf"]["card_type"];
 
     /* userInterest = map["pure_taxonomies"]["user_interest"] != null
         ? map["pure_taxonomies"]["user_interest"][0]["name"]
@@ -176,6 +178,7 @@ class Cards {
         //'authorName':authorName,
 //        'excerpt': excerpt,
         'featured_media': featuredMediaUrl,
+        'cardType': cardType,
 
 //        'comment_status': commentStatus,
 //        'ping_status': pingStatus,

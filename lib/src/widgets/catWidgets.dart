@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hawalnir1/src/pages/listView.dart';
 import 'package:hawalnir1/src/widgets/posts_card.dart';
 import 'package:hawalnir1/src/widgets/page_card.dart';
 import 'hawalnir-date-convertor.dart';
@@ -8,6 +9,7 @@ import '../config.dart';
 import '../../wordpress_client.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:http/http.dart' as http;
 
 Widget hawalImage(Post post) {
   return Stack(
@@ -223,6 +225,15 @@ Widget userInterest(Cards cards) {
     textAlign: TextAlign.left,
   );
 }
+
+Widget cardRestriction(Cards cards) {
+  return Text(
+    cards.userInterest,
+    textAlign: TextAlign.left,
+  );
+}
+
+Widget cardMenu(Cards cards) {}
 
 // This is the type used by the popup menu below.
 enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
