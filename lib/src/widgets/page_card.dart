@@ -117,6 +117,13 @@ class _PageCardState extends State<PageCard> {
         clipBehavior: Clip.hardEdge,
         child: Column(
           children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Hero(
+                    tag: 'hero${widget.card.id}',
+                    child: cardImage(widget.card)),
+              ],
+            ),
             new Padding(
               padding: EdgeInsets.all(5.0),
               child: new ListTile(

@@ -118,9 +118,9 @@ class Cards {
     //excerpt = map['excerpt'];
     //featuredMediaID = map['featured_media'];
     //featuredMediaUrl = map ['_links']["self"][0]['href'] ;
-    featuredMediaUrl = map["_embedded"]["wp:featuredmedia"] == null
+    featuredMediaUrl = map["acf"]["background_image"] == false
         ? 'https://cdn.thskth.se/assets/images/placeholder.jpg'
-        : map["_embedded"]["wp:featuredmedia"][0]["source_url"];
+        : map["acf"]["background_image"]["url"];
 
     //  post.featuredMediaUrl == null
     //           ? 'assets/images/placeholder.png'
